@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#17251e" />
+    <meta
+      name="description"
+      content="Serenara — ruang musik tenang untuk fokus, istirahat, dan tidur."
+    />
+    <title>Serenara — Ruang Tenang</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="ambient-bg" aria-hidden="true">
+      <video
+        class="global-scene-video"
+        id="global-scene-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      ></video>
+      <div class="bg-image"></div>
+      <div class="global-scene-shade"></div>
+      <div class="grain"></div>
+      <div class="glow glow-a"></div>
+      <div class="glow glow-b"></div>
+    </div>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Serenara beranda">
+          <img class="brand-logo" src="serenara-logo.png" alt="Logo Serenara" />
+          <span class="brand-name">
+            <strong>SERENARA</strong>
+            <small>sound for slow living</small>
+          </span>
+        </a>
+        <nav class="main-nav">
+          <button class="nav-link active" data-view="home">
+            <span data-ui-icon="nature" class="nav-symbol"></span> Beranda
+          </button>
+          <button class="nav-link" data-view="discover">
+            <span data-ui-icon="search" class="nav-symbol"></span> Jelajahi
+          </button>
+          <button class="nav-link" data-view="favorites">
+            <span data-ui-icon="heart" class="nav-symbol"></span> Favorit <b id="fav-count">0</b>
+          </button>
+        </nav>
+        <div class="side-label playlist-label">SUASANA</div>
+        <nav class="moods">
+          <button class="mood-link" data-category="Piano">
+            <i class="mood-dot piano"></i>Piano &amp; Lo-fi
+          </button>
+          <button class="mood-link" data-category="Alam">
+            <i class="mood-dot nature"></i>Suara Alam
+          </button>
+          <button class="mood-link" data-category="Hujan">
+            <i class="mood-dot rain"></i>Hujan &amp; Petir
+          </button>
+          <button class="mood-link" data-category="Air">
+            <i class="mood-dot water"></i>Aliran Air
+          </button>
+          <button class="mood-link" data-category="Campuran">
+            <i class="mood-dot mix"></i>Campuran
+          </button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="mini-note">
+            “Pelankan dunia.<br />
+            Dengarkan dirimu.”
+          </div>
+          <span>BUAT JEDA, SEKARANG.</span>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="mobile-brand">
+            <img class="brand-logo" src="serenara-logo.png" alt="Logo Serenara" /> SERENARA
+          </div>
+          <div class="breadcrumbs">
+            <span>Ruang pribadimu</span><span class="crumb-dot">/</span
+            ><b id="current-section">Beranda</b>
+          </div>
+          <div class="top-actions">
+            <button class="icon-btn" id="search-toggle" aria-label="Cari musik">
+              ⌕</button
+            ><button class="profile-pill">
+              <span class="profile-avatar" data-ui-icon="sun"></span><span>Slow mode</span>
+            </button>
+          </div>
+        </header>
+        <section class="search-wrap hidden" id="search-wrap">
+          <span data-ui-icon="search" class="search-symbol"></span
+          ><input
+            id="search-input"
+            placeholder="Cari piano, hujan, hutan..."
+            autocomplete="off"
+          /><button id="search-clear">×</button>
+        </section>
+
+        <section class="hero" id="hero">
+          <div class="hero-scene-bg" id="hero-scene-bg" aria-hidden="true">
+            <span class="scene-atmosphere"></span
+            ><span class="scene-sun"></span>
+          </div>
+          <div class="hero-copy">
+            <div class="eyebrow">
+              <span class="live-dot"></span> YOUR DAILY ESCAPE
+            </div>
+            <h1>Temukan tenang<br />di <em>antara suara.</em></h1>
+            <p>
+              Tempat kecil untuk bernapas lebih lega. Pilih suasana, pejamkan
+              mata, biarkan waktu berjalan pelan.
+            </p>
+            <div class="hero-buttons">
+              <button class="primary-btn" id="hero-play">
+                <span class="hero-play-icon" data-ui-icon="play"></span> Mulai menenangkan diri</button
+              ><button class="text-btn" id="surprise-btn">
+                ✧ Acak suasana
+              </button>
+            </div>
+          </div>
+          <div class="hero-footer">
+            <span>◉ DIBUAT UNTUK MOMENMU</span
+            ><span>HEADPHONES RECOMMENDED ↗</span>
+          </div>
+        </section>
+
+        <section class="time-modes" aria-label="Pilih mode waktu">
+          <div class="time-mode-heading">
+            <div>
+              <span class="eyebrow muted">SELARASKAN SUASANA</span>
+              <h2>Ikuti warna harimu</h2>
+              <p>Ubah cahaya dan nuansa ruang dengarmu.</p>
+            </div>
+            <span class="mode-current" id="mode-current"
+              >Malam yang tenang</span
+            >
+          </div>
+          <div class="time-mode-grid" role="group" aria-label="Mode suasana">
+            <button
+              class="time-mode-btn"
+              data-time-mode="sunrise"
+              aria-pressed="false"
+            >
+              <span class="mode-symbol" data-ui-icon="sunrise"></span
+              ><span><b>Sunrise</b><small>Hangat & memulai</small></span>
+            </button>
+            <button
+              class="time-mode-btn"
+              data-time-mode="day"
+              aria-pressed="false"
+            >
+              <span class="mode-symbol" data-ui-icon="sun"></span
+              ><span><b>Siang</b><small>Cerah & segar</small></span>
+            </button>
+            <button
+              class="time-mode-btn"
+              data-time-mode="sunset"
+              aria-pressed="false"
+            >
+              <span class="mode-symbol" data-ui-icon="sunset"></span
+              ><span><b>Sunset</b><small>Keemasan & lembut</small></span>
+            </button>
+            <button
+              class="time-mode-btn active"
+              data-time-mode="night"
+              aria-pressed="true"
+            >
+              <span class="mode-symbol" data-ui-icon="moon"></span
+              ><span><b>Malam</b><small>Redup & menenangkan</small></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="section-block" id="quick-section">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow muted">PILIH SUASANA</span>
+              <h2>Apa yang kamu butuhkan?</h2>
+            </div>
+            <button class="subtle-link" id="all-categories">
+              Lihat semua <span data-ui-icon="arrow" class="subtle-arrow"></span>
+            </button>
+          </div>
+          <div class="category-grid">
+            <button class="category-card cat-piano" data-category="Piano">
+              <span class="cat-icon" data-ui-icon="piano"></span
+              ><span class="cat-title">Piano &amp; Lo-fi</span
+              ><small>Melodi yang memeluk</small
+              ><span class="cat-arrow"></span>
+            </button>
+            <button class="category-card cat-nature" data-category="Alam">
+              <span class="cat-icon" data-ui-icon="nature"></span
+              ><span class="cat-title">Suara Alam</span
+              ><small>Hutan, angin, burung</small
+              ><span class="cat-arrow"></span>
+            </button>
+            <button class="category-card cat-rain" data-category="Hujan">
+              <span class="cat-icon" data-ui-icon="rain"></span
+              ><span class="cat-title">Hujan &amp; Petir</span
+              ><small>Rintik yang menenangkan</small
+              ><span class="cat-arrow"></span>
+            </button>
+            <button class="category-card cat-water" data-category="Air">
+              <span class="cat-icon" data-ui-icon="water"></span
+              ><span class="cat-title">Aliran Air</span
+              ><small>Sungai dan ombak</small><span class="cat-arrow"></span>
+            </button>
+            <button class="category-card cat-mix" data-category="Campuran">
+              <span class="cat-icon" data-ui-icon="mix"></span
+              ><span class="cat-title">Campuran</span
+              ><small>Lapisan suara seimbang</small
+              ><span class="cat-arrow"></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="section-block track-section" id="tracks-section">
+          <div class="mixer-note">
+            <span class="mixer-pulse"></span>
+            <div class="mixer-copy">
+              <b>Sound Mixer <span id="mixer-count">0 suara aktif</span></b
+              ><small
+                ><strong>1.</strong> Putar trek utama. <strong>2.</strong> Tekan
+                <strong>＋ Campur</strong> pada trek lain — suara utama tidak
+                akan berhenti. Maksimal 4 suara bersamaan.</small
+              >
+              <div id="mixer-active" class="mixer-active">
+                <span class="mixer-empty"
+                  >Belum ada suara aktif. Putar satu trek, lalu tambahkan trek
+                  lain.</span
+                >
+              </div>
+            </div>
+            <button id="clear-mix" type="button">Reset lapisan</button>
+          </div>
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow muted" id="track-eyebrow"
+                >PILIHAN HARI INI</span
+              >
+              <h2 id="track-heading">Temani harimu</h2>
+            </div>
+            <div class="list-controls">
+              <button class="filter-chip active" data-filter="Semua">
+                Semua</button
+              ><button class="filter-chip" data-filter="Piano">Piano</button
+              ><button class="filter-chip" data-filter="Alam">Alam</button
+              ><button class="filter-chip" data-filter="Hujan">Hujan</button>
+            </div>
+          </div>
+          <div class="track-list" id="track-list"></div>
+        </section>
+        <footer class="footer">
+          <span>© 2026 SERENARA STUDIO</span
+          ><span>BERHENTI SEJENAK JUGA SEBUAH KEMAJUAN.</span>
+        </footer>
+      </main>
+    </div>
+
+    <section class="player" aria-label="Pemutar musik">
+      <div class="now-playing">
+        <div class="track-art" id="player-art" data-ui-icon="piano"></div>
+        <div class="now-meta">
+          <b id="player-title">Pilih suara untuk memulai</b
+          ><span id="player-subtitle">Ruang tenang menunggumu</span>
+        </div>
+        <button class="heart-btn" id="player-fav" aria-label="Tambah favorit">
+          ♡
+        </button>
+      </div>
+      <div class="player-center">
+        <div class="transport">
+          <button id="shuffle-btn" class="player-small" aria-label="Acak" data-ui-icon="shuffle"></button
+          ><button id="prev-btn" class="player-small" aria-label="Sebelumnya" data-ui-icon="prev"></button
+          ><button id="play-btn" class="player-button" aria-label="Putar" data-ui-icon="play"></button>
+          <button id="next-btn" class="player-small" aria-label="Berikutnya" data-ui-icon="next"></button
+          ><button id="repeat-btn" class="player-small" aria-label="Ulangi" data-ui-icon="repeat"></button>
+        </div>
+        <div class="timeline">
+          <span id="elapsed">00:00</span
+          ><input
+            type="range"
+            id="seek"
+            min="0"
+            max="100"
+            value="0"
+            aria-label="Posisi musik"
+          /><span id="duration">∞</span>
+        </div>
+      </div>
+      <div class="player-extra">
+        <button id="visualizer-toggle" class="extra-btn">
+          <span class="equalizer" aria-hidden="true"><i></i><i></i><i></i></span> Visualizer
+        </button>
+        <div class="volume-wrap">
+          <span data-ui-icon="volume" class="volume-symbol"></span
+          ><input
+            type="range"
+            id="volume"
+            min="0"
+            max="100"
+            value="65"
+            aria-label="Volume"
+          />
+        </div>
+        <button
+          id="ambience-btn"
+          class="extra-btn"
+          title="Efek visual bergerak"
+        >
+          <span data-ui-icon="nature" class="ambience-symbol"></span> <span>Ambience</span>
+        </button>
+      </div>
+    </section>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
