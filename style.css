@@ -2237,6 +2237,46 @@ body[data-time-mode="night"] .scene-sun {
   background: var(--lime);
   border: 1px solid #243328;
 }
+/* SERENARA — Main Play Button */
+#play-btn.player-button {
+  background: #D9E79A !important;
+  background-color: #D9E79A !important;
+  color: #203B2E !important;
+  border: 1px solid #D9E79A !important;
+  box-shadow: 0 0 0 6px rgba(217, 231, 154, 0.12) !important;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ikon SVG Play/Pause */
+#play-btn.player-button svg {
+  color: #203B2E !important;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Jika ikon berupa teks atau karakter */
+#play-btn.player-button i,
+#play-btn.player-button span {
+  color: #203B2E !important;
+}
+
+/* Efek saat ditekan */
+#play-btn.player-button:active {
+  background: #C5D783 !important;
+  transform: scale(0.96);
+}
+
+/* Tampilan mobile */
+@media (max-width: 768px) {
+  #play-btn.player-button {
+    background: #D9E79A !important;
+    color: #203B2E !important;
+    border-color: #D9E79A !important;
+  }
+}
+
 .track-volume-control output {
   font:
     9px "DM Mono",
