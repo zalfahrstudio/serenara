@@ -2559,3 +2559,47 @@ button.play-btn:active {
   background: #c5d783 !important;
   transform: scale(0.96);
 }
+/* Serenara — warna tombol Play utama di semua perangkat */
+#player-play,
+.player-play,
+.main-play,
+button.play-btn {
+  background-color: #d9e79a !important;
+  color: #203b2e !important;
+  border: 1px solid #d9e79a !important;
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: 0 0 0 6px rgba(217, 231, 154, 0.12);
+}
+
+/* Ikon SVG Play/Pause */
+#player-play svg,
+.player-play svg,
+.main-play svg,
+button.play-btn svg {
+  color: #203b2e !important;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Efek saat disentuh di HP */
+#player-play:active,
+.player-play:active,
+.main-play:active,
+button.play-btn:active {
+  background-color: #c5d783 !important;
+  transform: scale(0.96);
+}
+
+/* Tampilan mobile */
+@media (max-width: 768px) {
+  #player-play,
+  .player-play,
+  .main-play,
+  button.play-btn {
+    background-color: #d9e79a !important;
+    color: #203b2e !important;
+    border-color: #d9e79a !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
