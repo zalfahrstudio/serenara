@@ -2531,3 +2531,31 @@ body[data-time-mode="night"] .ambient-bg .bg-image {
 .mixer-chip{display:inline-flex;align-items:center;gap:5px}
 .row-art .ui-icon,.track-art .ui-icon{width:25px;height:25px}
 @media (max-width:600px){.row-play{opacity:1}.row-play .ui-icon{width:16px;height:16px}}
+/* Warna tombol Play utama Serenara */
+#player-play,
+.player-play,
+.main-play,
+button.play-btn {
+  background: #d9e79a !important;
+  color: #203b2e !important;
+  border: 1px solid #d9e79a !important;
+  box-shadow: 0 0 0 6px rgba(217, 231, 154, 0.12);
+}
+
+/* Ikon SVG di dalam tombol */
+#player-play svg,
+.player-play svg,
+.main-play svg,
+button.play-btn svg {
+  color: #203b2e !important;
+  fill: currentColor;
+}
+
+/* Saat tombol ditekan */
+#player-play:active,
+.player-play:active,
+.main-play:active,
+button.play-btn:active {
+  background: #c5d783 !important;
+  transform: scale(0.96);
+}
